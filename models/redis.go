@@ -11,7 +11,7 @@ var Pool *redis.Pool
 func InitRedis() {
 	Pool = &redis.Pool{
 		MaxIdle:   20,
-		MaxActive: 20, // max number of connections
+		MaxActive: 10000, // max number of connections
 		Dial: func() (redis.Conn, error) {
 
 			//local
