@@ -1,6 +1,10 @@
 package models
 
-import "github.com/garyburd/redigo/redis"
+import (
+	"os"
+
+	"github.com/garyburd/redigo/redis"
+)
 
 var Pool *redis.Pool
 
@@ -11,10 +15,10 @@ func InitRedis() {
 		Dial: func() (redis.Conn, error) {
 
 			//local
-			c, err := redis.Dial("tcp", ":6379")
+			//c, err := redis.Dial("tcp", ":6379")
 
 			//heroku
-			//c, err := redis.DialURL(os.Getenv("REDIS_URL"))
+			c, err := redis.DialURL(os.Getenv("REDIS_URL"))
 			if err != nil {
 				panic(err.Error())
 			}

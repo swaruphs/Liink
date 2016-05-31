@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/negroni"
@@ -17,8 +18,8 @@ func main() {
 	log.SetFormatter(&log.JSONFormatter{})
 
 	//get the port
-	//port := os.Getenv("PORT")
-	port := "3000"
+	port := os.Getenv("PORT")
+	//port := "3000"
 
 	//initialize routes
 	router := routers.InitRoutes()
@@ -30,12 +31,12 @@ func main() {
 	// initialize Database
 
 	//local
-	models.InitDB("postgres://swarup@localhost/LinkDB?sslmode=disable")
-	models.InitRedis()
+	// models.InitDB("postgres://swarup@localhost/LinkDB?sslmode=disable")
+	// models.InitRedis()
 
 	// heroku
-	// models.InitDB(os.Getenv("DATABASE_URL"))
-	// models.InitRedis()
+	models.InitDB(os.Getenv("DATABASE_URL"))
+	models.InitRedis()
 
 	fmt.Print("starting server..")
 	http.ListenAndServe(":"+port, n)
