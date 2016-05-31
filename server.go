@@ -27,6 +27,9 @@ func main() {
 	n.Use(negroni.NewLogger())
 	n.UseHandler(router)
 
+	// add static files
+	http.Handle("/", http.FileServer(http.Dir("./static")))
+
 	// initialize Database
 	models.InitDB(os.Getenv("DATABASE_URL"))
 	models.InitRedis()
