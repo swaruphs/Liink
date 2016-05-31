@@ -90,17 +90,19 @@ func GetLink(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if u.Platform() == "Android" {
-		http.Redirect(w, r, link.PlayStoreURL, 302)
-		return
-	}
+	helpers.SendResponse(w, link)
 
-	if u.Platform() == "iPhone" {
-		http.Redirect(w, r, link.AppstoreURL, 302)
-		return
-	}
-
-	http.Redirect(w, r, link.WebURL, 302)
+	// if u.Platform() == "Android" {
+	// 	http.Redirect(w, r, link.PlayStoreURL, 302)
+	// 	return
+	// }
+	//
+	// if u.Platform() == "iPhone" {
+	// 	http.Redirect(w, r, link.AppstoreURL, 302)
+	// 	return
+	// }
+	//
+	// http.Redirect(w, r, link.WebURL, 302)
 
 	//helpers.SendResponse(w, link)
 
