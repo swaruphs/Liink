@@ -28,7 +28,7 @@ func main() {
 	n.UseHandler(router)
 
 	// add static files
-	http.Handle("/", http.FileServer(http.Dir("./static")))
+	http.Handle("/loaderio-b0fbe29c9838d25383e17790544f1a3f", http.FileServer(http.Dir("./static")))
 
 	// initialize Database
 	models.InitDB(os.Getenv("DATABASE_URL"))
