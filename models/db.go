@@ -18,6 +18,7 @@ func InitDB(dataSourceName string) {
 
 	if err = DB.Ping(); err != nil {
 		//log.Panic(err)
+		fmt.Print(err)
 	}
 
 	createTables(DB)
