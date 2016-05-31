@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/codegangsta/negroni"
@@ -18,7 +17,8 @@ func main() {
 	log.SetFormatter(&log.JSONFormatter{})
 
 	//get the port
-	port := os.Getenv("PORT")
+	//port := os.Getenv("PORT")
+	port := "3000"
 
 	//initialize routes
 	router := routers.InitRoutes()
@@ -27,12 +27,15 @@ func main() {
 	n.Use(negroni.NewLogger())
 	n.UseHandler(router)
 
-	// add static files
-	http.Handle("/loaderio-b0fbe29c9838d25383e17790544f1a3f", http.FileServer(http.Dir("./static")))
-
 	// initialize Database
-	models.InitDB(os.Getenv("DATABASE_URL"))
+
+	//local
+	models.InitDB("postgres://swarup@localhost/LinkDB?sslmode=disable")
 	models.InitRedis()
+
+	// heroku
+	// models.InitDB(os.Getenv("DATABASE_URL"))
+	// models.InitRedis()
 
 	fmt.Print("starting server..")
 	http.ListenAndServe(":"+port, n)
