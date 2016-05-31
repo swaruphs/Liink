@@ -17,6 +17,9 @@ func main() {
 	//logger
 	log.SetFormatter(&log.JSONFormatter{})
 
+	//get the port
+	port := os.Getenv("PORT")
+
 	//initialize routes
 	router := routers.InitRoutes()
 	n := negroni.New()
@@ -29,5 +32,5 @@ func main() {
 	models.InitRedis()
 
 	fmt.Print("starting server..")
-	http.ListenAndServe(":3000", n)
+	http.ListenAndServe(":"+port, n)
 }
