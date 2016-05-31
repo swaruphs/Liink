@@ -90,8 +90,6 @@ func GetLink(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	helpers.SendResponse(w, link)
-
 	// if u.Platform() == "Android" {
 	// 	http.Redirect(w, r, link.PlayStoreURL, 302)
 	// 	return
@@ -104,6 +102,6 @@ func GetLink(w http.ResponseWriter, r *http.Request) {
 	//
 	// http.Redirect(w, r, link.WebURL, 302)
 
-	//helpers.SendResponse(w, link)
+	helpers.SendResponse(w, link)
 
 }

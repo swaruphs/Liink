@@ -17,17 +17,20 @@ func GetLink(linkID int) (models.Link, error) {
 	link := models.Link{}
 	value, err := redis.Values(c.Do("HGETALL", linkID))
 	if err != nil {
+		fmt.Print(err)
 		return link, err
 	}
 
 	if len(value) > 0 {
 		err = redis.ScanStruct(value, &link)
+		fmt.Print(err)
 		return link, err
 	}
 
 	rows, err := models.DB.Query("select * from link where id = $1", linkID)
 	defer rows.Close()
 	if err != nil {
+		fmt.Print(err)
 		return link, err
 	}
 
