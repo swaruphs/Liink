@@ -1,8 +1,8 @@
 package routers
 
 import (
-	"api.todolist/controllers"
-	"api.todolist/middleware"
+	"api.link/controllers"
+	"api.link/middleware"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
 )
