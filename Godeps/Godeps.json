@@ -29,6 +29,10 @@
 			"Rev": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13"
 		},
 		{
+			"ImportPath": "github.com/golang/glog",
+			"Rev": "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
+		},
+		{
 			"ImportPath": "github.com/gorilla/context",
 			"Comment": "v1.1-2-ga8d44e7",
 			"Rev": "a8d44e7d8e4d532b6a27a02dd82abb31cc1b01bd"
@@ -61,6 +65,30 @@
 			"ImportPath": "github.com/speps/go-hashids",
 			"Comment": "v1.0.0",
 			"Rev": "d1d57a886aa7e3ef6092b70ceab077e35ee8e0ce"
+		},
+		{
+			"ImportPath": "github.com/youtube/vitess/go/acl",
+			"Comment": "v2.0.0-beta.2-391-g7a7b248",
+			"Rev": "7a7b248cecbd85b3cfc85a0919b080e07da6c875"
+		},
+		{
+			"ImportPath": "github.com/youtube/vitess/go/cache",
+			"Comment": "v2.0.0-beta.2-391-g7a7b248",
+			"Rev": "7a7b248cecbd85b3cfc85a0919b080e07da6c875"
+		},
+		{
+			"ImportPath": "github.com/youtube/vitess/go/pools",
+			"Comment": "v2.0.0-beta.2-391-g7a7b248",
+			"Rev": "7a7b248cecbd85b3cfc85a0919b080e07da6c875"
+		},
+		{
+			"ImportPath": "github.com/youtube/vitess/go/sync2",
+			"Comment": "v2.0.0-beta.2-391-g7a7b248",
+			"Rev": "7a7b248cecbd85b3cfc85a0919b080e07da6c875"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "96dbb961a39ddccf16860cdd355bfa639c497f23"
 		},
 		{
 			"ImportPath": "golang.org/x/sys/unix",

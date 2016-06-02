@@ -4,17 +4,26 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/garyburd/redigo/redis"
+	"golang.org/x/net/context"
 
 	"api.link/models"
+	"github.com/garyburd/redigo/redis"
 )
 
 func GetLink(linkID int) (models.Link, error) {
 
-	c := models.Pool.Get()
-	defer c.Close()
-
 	link := models.Link{}
+	ctx := context.TODO()
+	r, err := models.RPool.Get(ctx)
+	if err != nil {
+		fmt.Print("cannot get RPool connection")
+		return link, nil
+	}
+
+	defer models.RPool.Put(r)
+	c := r.(models.ResourceConn)
+	//defer c.Close()
+
 	value, err := redis.Values(c.Do("HGETALL", linkID))
 	if err != nil {
 		fmt.Print(err)

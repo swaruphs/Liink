@@ -31,12 +31,15 @@ func main() {
 	// initialize Database
 
 	//local
-	// models.InitDB("postgres://swarup@localhost/LinkDB?sslmode=disable")
-	// models.InitRedis()
+	models.InitDB("postgres://swarup@localhost/LinkDB?sslmode=disable")
+	models.InitRedis()
+	defer models.RPool.Close()
 
 	// heroku
-	models.InitDB(os.Getenv("DATABASE_URL"))
-	models.InitRedis()
+	// models.InitDB(os.Getenv("DATABASE_URL"))
+	// //redis
+	// models.InitRedis()
+	// defer models.RPool.Close()
 
 	fmt.Print("starting server..")
 	http.ListenAndServe(":"+port, n)
